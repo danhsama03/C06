@@ -1,37 +1,60 @@
 import { question } from "readline-sync";
-
 /**
- * Ham nhap cac cot diem
- * @param len So luong cot diem
+ * Ham nhap cac phan tu theo so luong
+ * @param len So luong phan tu 
  * @returns Tra ve mang
  */
-function nhapDiem(len: number): number[] {
+function nhapMang(len: number): number[] {
 	let arr: number[] = [];
-	for (let i: number = 0; i < len; i++) {
-		arr[i] = Number(question(`- Nhap diem thu ${i+1}: `));
-	}
+	for (let i = 0; i < len; i++) {
+        arr[i] = Number(question(`Nhap phan tu vi tri ${i}: `));
+    };
 	return arr;
-}
+};
 
 /**
- * Ham tinh diem trung binh
- * @param diem Diem tung cot nhap tu may tinh
- * @returns Tra ve diem
+ * Ham kiem tra la so nguyen to
+ * @param x Phan tu trong mang
+ * @returns Tra ve true hoac false
  */
-function dtb(diem: number[]): number {
-    return (diem[0] + diem[1] + diem[2])/3;
-}
+function laSNT(x: number): boolean {
+    let dem: number = 0;
+    for (let i = 1; i <= x; i++) {
+        if (x % i == 0) {
+            dem++;
+        };
+    };
+
+    if (dem == 2) {
+        return true;
+    } else {
+        return false;
+    };   
+};
 
 /**
- * Ham chuc nang goi ham nhap diem, ham tinh diem tb va in ra ket qua
+ * Ham tinh bao nhieu so nguyen to
+ * @param arr Mang
  */
-function cnDTB(): void {
-	let d = nhapDiem(3);
-	let kq = dtb(d);
-	console.log(kq);
-}
+function tinhBaoNhieuSNT(arr: number[]): void {
+    let diem: number = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (laSNT(arr[i]) == true) {
+            diem++;
+        };
+    };
+    console.log(diem);
+};
 
-cnDTB();
+/**
+ * Ham chuc nang nhap so luong phan tu, goi ham nhap mang, ham tinh bao nhieu so nguyen to
+ */
+function main(): void {
+    let n: number = Number(question("Nhap so luong phan tu: "));
+    let a: number[] = nhapMang(n);
+    tinhBaoNhieuSNT(a);
+};
 
+main();
 
 export {};

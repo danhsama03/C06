@@ -33,24 +33,28 @@ function laSNT(x: number): boolean {
 };
 
 /**
- * Ham liet ke so nguyen to
+ * Ham luu so nguyen to vao mang khac
  * @param arr Mang
  */
-function lietKeSNT(arr: number[]): void {
+function kiemTraSNT(arr: number[]): number[] {
+    let arr2: number[] = [];
     for (let i = 0; i < arr.length; i++) {
         if (laSNT(arr[i]) == true) {
-            console.log(arr[i]);
+            arr2[i] = arr[i];
         };
     };
+    console.log(arr2);
+    return arr2;
 };
 
+
 /**
- * Ham chuc nang nhap so luong phan tu, goi ham nhap mang, ham liet ke SNT
+ * Ham chuc nang nhap so luong phan tu, goi ham nhap mang, ham luu so nguyen to vao mang khac
  */
 function main(): void {
     let n: number = Number(question("Nhap so luong phan tu: "));
     let a: number[] = nhapMang(n);
-    lietKeSNT(a);
+    kiemTraSNT(a);
 };
 
 main();

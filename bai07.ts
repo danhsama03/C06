@@ -13,26 +13,26 @@ function nhapMang(len: number): number[] {
 };
 
 /**
- * Ham tinh tong am
+ * Ham tim so lon nhat
  * @param arr Mang
  */
-function tinhTongAm(arr: number[]): void {
-    let s: number = 0;
+function timMax(arr: number[]): void {
+    let max: number = 0;
     for (let i = 0; i <= arr.length; i++) {
-        if (arr[i] < 0) {
-            s = s + arr[i];
+        if (max < arr[i]) {
+            max = arr[i];
         };
     };
-    console.log(s);
+    console.log(max);
 };
 
 /**
- * Ham chuc nang nhap so luong phan tu, goi ham nhap mang, ham tinh tong am
+ * Ham chuc nang nhap so luong phan tu, goi ham nhap mang, ham tim so lon nhat
  */
 function main(): void {
     let n: number = Number(question("Nhap so luong phan tu: "));
     let a: number[] = nhapMang(n);
-    tinhTongAm(a);
+    timMax(a);
 };
 
 main();
